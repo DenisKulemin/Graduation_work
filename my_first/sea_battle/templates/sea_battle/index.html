@@ -1,0 +1,32 @@
+<html>
+    <body>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'sea_battle/style/index.css' %}">
+        <div class="box_log_in">
+            <form action="{% url 'sea_battle:log_in' %}" method="post" autocomplete="off">
+                {% csrf_token %}
+                <span>Username</span>
+                <input type="text" name="username" required>
+                <span>Password</span>
+                <input type="password" name="password" required>
+                <input class="button" type="Submit" name="Log_in" value="Log in">
+            </form>
+        </div>
+        <div class="box_reg">
+            <form action="{% url 'sea_battle:registration' %}" method="post" autocomplete="off">
+                {% csrf_token %}
+                <span>Username</span>
+                <input type="text" name="username" required>
+                <span>Password</span>
+                <input type="password" name="password" required>
+                <input class="button" type="Submit" name="Registration" value="Registration">
+            </form>
+        </div>
+    <p class="mistake">{{ mistake }}</p>
+    <p>
+        Are you first time here?
+        <br>If Yes, choose "Registration".
+        <br>If not, press "Login".
+    </p>
+    </body>
+</html>

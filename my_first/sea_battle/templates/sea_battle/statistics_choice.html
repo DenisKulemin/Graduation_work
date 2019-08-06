@@ -1,0 +1,127 @@
+<html>
+<body>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'sea_battle/style/statistics_choice.css' %}">
+    <div class="top-box">
+        <div class="return">
+            <form action="{% url 'sea_battle:return_to_personal_area' %}" method="post">
+                {% csrf_token %}
+                <input type="Submit" value="Return">
+            </form>
+        </div>
+        <h1>Player statistic</h1>
+        <div class="Log_out">
+            <form action="{% url 'sea_battle:log_out' %}" method="post">
+                {% csrf_token %}
+                <input type="Submit" value="Log out">
+            </form>
+        </div>
+    </div>
+    <table class="form_table">
+        <tr>
+            <td class="username">Username</td>
+            <td>Games</td>
+            <td>Won games</td>
+            <td>Percent of victory</td>
+            <td>Registration date</td>
+            <td>Last connection date</td>
+        </tr>
+    </table>
+    <form action="{% url 'sea_battle:search' %}" method="post">
+        {% csrf_token %}
+        <div class="username">
+            <input type="text" name="username" value="None name">
+        </div>
+        <div class="radio">
+            <input type="radio" name="games" value="ascending" checked>
+            <p>ascending</p>
+        </div>
+        <div class="radio">
+            <input type="radio" name="won_games" value="ascending" checked>
+            <p>ascending</p>
+        </div>
+        <div class="radio">
+            <input type="radio" name="percent_of_victory" value="ascending" checked>
+            <p>ascending</p>
+        </div>
+        <div class="radio">
+            <input type="radio" name="registration_date" value="ascending" checked>
+            <p>ascending</p>
+        </div>
+        <div class="radio">
+            <input type="radio" name="last_connection_date" value="ascending" checked>
+            <p>ascending</p>
+        </div>
+        <div class="hidden">
+            <input type="text">
+        </div>
+        <div class="radio">
+            <input type="radio" name="games" value="descending">
+            <p>descending</p>
+        </div>
+        <div class="radio">
+            <input type="radio" name="won_games" value="descending">
+            <p>descending</p>
+        </div>
+        <div class="radio">
+            <input type="radio" name="percent_of_victory" value="descending">
+            <p>descending</p>
+        </div>
+        <div class="radio">
+            <input type="radio" name="registration_date" value="descending">
+            <p>descending</p>
+        </div>
+        <div class="radio">
+            <input type="radio" name="last_connection_date" value="descending">
+            <p>descending</p>
+        </div>
+        <div class="order">
+            <p>Choose parameter for sorting</p>
+        </div>
+        <div class="order">
+            <input type="radio" name="sorting_by" value="games" checked>
+        </div>
+        <div class="order">
+            <input type="radio" name="sorting_by" value="won_games">
+        </div>
+        <div class="order">
+            <input type="radio" name="sorting_by" value="percent_of_victory">
+        </div>
+        <div class="order">
+            <input type="radio" name="sorting_by" value="registration_date">
+        </div>
+        <div class="order">
+            <input type="radio" name="sorting_by" value="last_connection_date">
+        </div>
+        <input class="button" type="Submit" name="search" value="search" min="0" max="5">
+    </form>
+    <p>
+        {{ mistake }}
+    </p>
+    <table>
+        <tr>
+            <td class="username">Username</td>
+            <td class="games">Games</td>
+            <td class="won_game">Won games</td>
+            <td class="percent">Percent of victory</td>
+            <td class="registration">Registration date</td>
+            <td class="connection">Last connection date</td>
+        </tr>
+        {% for player in list_of_player_statistics %}
+        <tr>
+            <td class="username">{{ player.username }}</td>
+            <td class="games">{{ player.games }}</td>
+            <td class="won_game">{{ player.won_games }}</td>
+            <td class="percent">{{ player.percent_of_victory }}</td>
+            <td class="registration">{{ player.registration_date }}</td>
+            <td class="connection">{{ player.last_connection_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p class="joke">You can see only 20 results, because of developers =)</p>
+</body>
+</html>
+
+
+
+

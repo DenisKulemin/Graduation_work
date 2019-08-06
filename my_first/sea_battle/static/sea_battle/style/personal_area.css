@@ -1,0 +1,83 @@
+body {
+    padding: 0%;
+    }
+
+h1, h2 {
+    text-align: center;
+    }
+
+h2 {
+    margin-top: 10%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    }
+
+td {
+    border: 1px solid blue;
+    width: 15%;
+}
+
+div {
+    margin: 4% 0% 4% 6%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    width: 25%;
+    }
+
+input {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin: 2% 0%;
+    }
+
+form {
+    width: 100%;
+    margin: 0%;
+    }
+
+p {
+    margin: 0%;
+    }
+
+.old_username {
+    display: none;
+    }
+
+.mistake {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin-top: 3%;
+    }
+
+.log_out, .start_game, .statistic {
+    width: 100%;
+    margin: 0%;
+    height: 20%;
+    display: inline-block;
+    text-align: right;
+    vertical-align: bottom;
+    }
+
+.start_game, .statistic {
+    width: 45%;
+    margin-left: 3%;
+    height: 10%;
+    }
+
+.start_game input, .statistic input {
+    margin: 0%;
+    height: 100%;
+    }
+
+.log_out div {
+    position: relative;
+    top: 50%;
+    }
+

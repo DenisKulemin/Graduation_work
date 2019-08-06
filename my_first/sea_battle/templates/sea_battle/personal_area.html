@@ -1,0 +1,84 @@
+<html>
+<body>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'sea_battle/style/personal_area.css' %}">
+    <h1>Personal area</h1>
+    <table>
+        <tr>
+            <td class="username">Username</td>
+            <td class="games">Games</td>
+            <td class="won_game">Won games</td>
+            <td class="percent">Percent of victory</td>
+            <td class="registration">Registration date</td>
+            <td class="connection">Last connection date</td>
+        </tr>
+        <tr>
+            <td class="username">{{ info.username }}</td>
+            <td class="games">{{ info.games }}</td>
+            <td class="won_game">{{ info.won_games }}</td>
+            <td class="percent">{{ info.percent_of_victory }}</td>
+            <td class="registration">{{ info.registration_date }}</td>
+            <td class="connection">{{ info.last_connection_date }}</td>
+        </tr>
+    </table>
+    <h1 class="mistake">{{ mistake }}</h1>
+    <div class="start_game">
+        <form action="{% url 'sea_battle:start_game' %}" method="post">
+            {% csrf_token %}
+            <input type="Submit" value="Start game">
+        </form>
+    </div>
+    <div class="statistic">
+        <form action="{% url 'sea_battle:statistic' %}" method="post">
+            {% csrf_token %}
+            <input type="Submit" value="Statistic">
+        </form>
+    </div>
+    <h2>Player settings</h2>
+    <div class="change">
+        <form action="{% url 'sea_battle:change_username' %}" method="post" autocomplete="off">
+            {% csrf_token %}
+            <input class="old_username" type="text" name="old_username" value="{{ info.username }}">
+            <p>Enter new username</p>
+            <input type="text" name="new_username" required>
+            <p>Enter your password</p>
+            <input type="password" name="password" required>
+            <input type="Submit" value="Change username">
+        </form>
+    </div>
+    <div class="change">
+        <form action="{% url 'sea_battle:change_password' %}" method="post" autocomplete="off">
+            {% csrf_token %}
+                <input class="old_username" type="text" name="old_username" value="{{ info.username }}">
+                <p>Enter old password</p>
+                <input type="password" name="old_password" required>
+                <p>Enter new password</p>
+                <input type="password" name="new_password" required>
+                <p>Enter new password again</p>
+                <input type="password" name="new_password_again" required>
+                <input type="Submit" value="Change password">
+        </form>
+    </div>
+    <div class="change">
+        <form action="{% url 'sea_battle:delete_player' %}" method="post">
+            {% csrf_token %}
+                <input class="old_username" type="text" name="old_username" value="{{ info.username }}">
+                <p>Enter your password</p>
+                <input type="password" name="password" required>
+                <input type="Submit" value="Delete player">
+        </form>
+    </div>
+    <div class="Log_out">
+        <div >
+            <form action="{% url 'sea_battle:log_out' %}" method="post">
+                {% csrf_token %}
+                <input type="Submit" value="Log out">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
